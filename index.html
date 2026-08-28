@@ -3,15 +3,72 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Combined — Barbershop / Mockup Canvas / Screenshot to Code</title>
+  <meta name="description" content="Combined entry that embeds Barbershop, Mockup Canvas, and Screenshot to Code previews in one file." />
+  <style>
+    :root{--bg:#0f172a;--card:#071033;--muted:#94a3b8;--accent:#0369a1}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:#e6eef8;background:linear-gradient(180deg,#071129 0%, #071033 100%);min-height:100vh}
+    .wrap{max-width:1100px;margin:24px auto;padding:20px}
+    header{display:flex;align-items:center;gap:16px}
+    h1{margin:0;font-size:1.4rem}
+    .lead{margin:6px 0 0;color:var(--muted)}
+    .tabs{display:flex;gap:8px;margin-top:14px}
+    .tab{padding:.45rem .9rem;background:rgba(255,255,255,0.03);border-radius:8px;color:var(--muted);cursor:pointer;text-decoration:none}
+    .tab.active{background:var(--accent);color:#fff;font-weight:600}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));border-radius:12px;padding:12px;margin-top:18px;box-shadow:0 6px 24px rgba(2,6,23,0.6)}
+    .iframe-wrap{height:65vh;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.04);background:#061124}
+    iframe{border:0;width:100%;height:100%}
+    footer{margin-top:18px;color:var(--muted);font-size:.9rem;text-align:center}
+    @media (max-width:720px){.wrap{margin:18px;padding:16px}.iframe-wrap{height:55vh}}
+    pre.code{white-space:pre-wrap;word-break:break-word;background:#021026;padding:12px;border-radius:8px;color:#cfe8ff}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div style="width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,#0369a1,#60a5fa);display:flex;align-items:center;justify-content:center;font-size:22px">✂️</div>
+      <div>
+        <h1>Barbershop — Combined Preview</h1>
+        <p class="lead">This single index.html contains the contents of the repository's root index.html, the Mockup Canvas (artifacts/mockup-sandbox/index.html), and the Screenshot to Code frontend (tools/screenshot-to-code/frontend/index.html). Use the tabs to switch between embedded views.</p>
+      </div>
+    </header>
+
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-target="barbershop">Barbershop (root)</button>
+      <button class="tab" data-target="mockup">Mockup Canvas</button>
+      <button class="tab" data-target="s2c">Screenshot to Code</button>
+      <a class="tab" href="https://replit.com/@desiredoue22/ExtraneousIndigoPlanes" target="_blank" rel="noopener" style="margin-left:auto">Open Replit project</a>
+    </div>
+
+    <div class="card">
+      <div class="iframe-wrap" id="iframeWrap">
+        <iframe id="previewFrame" title="Combined preview"></iframe>
+      </div>
+    </div>
+
+    <footer>
+      Combined file generated to include three index.html entries. Files originally from:
+      <div style="font-size:.85rem;color:var(--muted);margin-top:6px">/index.html · /artifacts/mockup-sandbox/index.html · /tools/screenshot-to-code/frontend/index.html</div>
+    </footer>
+  </div>
+
+  <!-- Templates containing original HTML files. These are inert until inserted into an iframe via srcdoc. -->
+  <template id="tmpl-barbershop">
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Barbershop — Run the Replit project</title>
   <meta name="description" content="Barbershop — demo hosted from the repository Noahwrld/barbershop. Run the Replit project below." />
   <link rel="canonical" href="https://noahwrld.github.io/barbershop/">
   <!-- Simple SVG favicon as data URL -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230369a1'/%3E%3Ctext x='50' y='57' font-size='50' text-anchor='middle' fill='%23fff' font-family='system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial'%3E✂️%3C/text%3E%3C/svg%3E">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230369a1'/%3E%3Ctext x='50' y='57' font-size='40' fill='%23fff' text-anchor='middle'%3E✂️%3C/text%3E%3C/svg%3E">
   <style>
     :root{--bg:#0f172a;--card:#071033;--muted:#94a3b8;--accent:#0369a1;--glass: rgba(255,255,255,0.03)}
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:#e6eef8;background:linear-gradient(180deg,#071129 0%, #041022 60%)}
+    html,body{height:100%;margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:#e6eef8;background:linear-gradient(180deg,#071129 0%, #071033 100%)}
     .wrap{max-width:1100px;margin:32px auto;padding:24px}
     header{display:flex;align-items:center;gap:16px}
     .brand{display:flex;flex-direction:column}
@@ -59,18 +116,121 @@
     const frame = document.getElementById('replitFrame');
     frame.addEventListener('load', ()=>{
       try{
-        // test access; will throw if cross-origin blocks some ops
         const doc = frame.contentDocument || frame.contentWindow.document;
       }catch(e){
-        // nothing to do; content will still be visible if Replit allows embedding
+        // cross-origin restrictions are expected; nothing to do
       }
     });
-    // If the iframe remains blank for a while, show a small hint to open in Replit.
-    setTimeout(()=>{
-      const win = frame.contentWindow;
-      // If the iframe hasn't painted (height 0) or reported no src, show a subtle overlay message
-      // (Skip complex overlay; user can use the Open Replit button.)
-    },4000);
+  </script>
+</body>
+</html>
+  </template>
+
+  <template id="tmpl-mockup">
+<!DOCTYPE html>
+<!--
+  This file is the entry for ALL routes, including /preview/* canvas iframes.
+  Fonts are loaded here as non-blocking <link> tags (not CSS @import, which is render-blocking).
+-->
+<html lang="en" style="height: 100%">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
+
+    <meta property="og:title" content="Mockup Canvas" />
+    <meta property="og:description" content="UI prototyping sandbox with infinite canvas" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mockup Canvas" />
+    <meta name="twitter:description" content="UI prototyping sandbox with infinite canvas" />
+
+    <title>Mockup Canvas</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
+    <!-- Non-blocking font bundle: renders with fallback fonts immediately, swaps in when loaded -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" media="print" onload="this.media='all'"
+          href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fira+Code:wght@300..700&family=Geist+Mono">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Fira+Code:wght@300..700&family=Geist+Mono"></noscript>
+  </head>
+  <body style="height: 100%; margin: 0">
+    <div id="root" style="height: 100%"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+  </template>
+
+  <template id="tmpl-s2c">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/favicon/main.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Injected code for hosted version -->
+    <!-- (templating placeholder originally: &lt;%- injectHead %&gt;) -->
+
+    <title>Screenshot to Code</title>
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Screenshot to Code" />
+    <meta
+      property="og:description"
+      content="Convert any screenshot or design to clean code"
+    />
+    <meta
+      property="og:image"
+      content="https://screenshottocode.com/brand/twitter-summary-card.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="628" />
+    <meta property="og:url" content="https://screenshottocode.com" />
+    <meta property="og:type" content="website" />
+    <!-- Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@picoapps" />
+    <!-- Keep in sync with og:title, og:description and og:image -->
+    <meta name="twitter:title" content="Screenshot to Code" />
+    <meta
+      name="twitter:description"
+      content="Convert any screenshot or design to clean code"
+    />
+    <meta
+      name="twitter:image"
+      content="https://screenshottocode.com/brand/twitter-summary-card.png"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+  </template>
+
+  <script>
+    // Simple tab logic: swap iframe srcdoc from templates
+    const tabs = document.querySelectorAll('.tab');
+    const frame = document.getElementById('previewFrame');
+    function setActive(target){
+      tabs.forEach(t=>t.classList.toggle('active', t.dataset && t.dataset.target===target));
+      const tmpl = document.getElementById('tmpl-' + target);
+      if(tmpl){
+        // Use the template's innerHTML as a full HTML document via srcdoc
+        frame.srcdoc = tmpl.innerHTML;
+      }
+    }
+    tabs.forEach(t=>t.addEventListener('click', ()=> setActive(t.dataset.target)));
+    // default
+    setActive('barbershop');
   </script>
 </body>
 </html>
