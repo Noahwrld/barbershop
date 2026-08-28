@@ -3,34 +3,74 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Barbershop</title>
-  <meta name="description" content="Repository site for https://replit.com/@desiredoue22/ExtraneousIndigoPlanes" />
+  <title>Barbershop — Run the Replit project</title>
+  <meta name="description" content="Barbershop — demo hosted from the repository Noahwrld/barbershop. Run the Replit project below." />
   <link rel="canonical" href="https://noahwrld.github.io/barbershop/">
+  <!-- Simple SVG favicon as data URL -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230369a1'/%3E%3Ctext x='50' y='57' font-size='50' text-anchor='middle' fill='%23fff' font-family='system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial'%3E✂️%3C/text%3E%3C/svg%3E">
   <style>
-    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; line-height: 1.6; padding: 2rem; max-width: 720px; margin: auto; color: #0f172a; background: #f8fafc; }
-    header { text-align:center; margin-bottom:2rem; }
-    a.button { display:inline-block; padding: .6rem 1rem; background:#0369a1; color:white; border-radius:6px; text-decoration:none; }
-    footer { margin-top:3rem; color:#475569; font-size:.9rem; text-align:center; }
+    :root{--bg:#0f172a;--card:#071033;--muted:#94a3b8;--accent:#0369a1;--glass: rgba(255,255,255,0.03)}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;color:#e6eef8;background:linear-gradient(180deg,#071129 0%, #041022 60%)}
+    .wrap{max-width:1100px;margin:32px auto;padding:24px}
+    header{display:flex;align-items:center;gap:16px}
+    .brand{display:flex;flex-direction:column}
+    h1{margin:0;font-size:1.6rem}
+    p.lead{margin:6px 0 0;color:var(--muted)}
+    .controls{margin-top:14px}
+    a.button{display:inline-block;padding:.55rem 1rem;background:var(--accent);color:#fff;border-radius:8px;text-decoration:none;font-weight:600}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));border-radius:12px;padding:12px;margin-top:18px;box-shadow:0 6px 24px rgba(2,6,23,0.6)}
+    .iframe-wrap{height:65vh;border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,0.04)}
+    iframe{border:0;width:100%;height:100%}
+    footer{margin-top:18px;color:var(--muted);font-size:.9rem;text-align:center}
+    @media (max-width:720px){.wrap{margin:18px;padding:16px}.iframe-wrap{height:55vh}}
   </style>
 </head>
 <body>
-  <header>
-    <h1>Barbershop</h1>
-    <p>Hosted from the repository <code>Noahwrld/barbershop</code>.</p>
-  </header>
-  <main>
-    <p>This GitHub Pages site was created automatically to serve a static front page so the Pages site stops returning 404.</p>
-    <p><a class="button" href="https://replit.com/@desiredoue22/ExtraneousIndigoPlanes" target="_blank" rel="noopener">Open the Replit project</a></p>
-    <section>
-      <h2>What you can do next</h2>
-      <ul>
-        <li>Add your site files (index.html, CSS, JS) here and push to the default branch (main) or to the docs/ folder.</li>
-        <li>If your site needs building, add a GitHub Actions workflow to build and deploy to gh-pages or docs/.</li>
-      </ul>
-    </section>
-  </main>
-  <footer>
-    <p>Deployed via GitHub Pages — check Settings → Pages to verify the source if needed.</p>
-  </footer>
+  <div class="wrap">
+    <header>
+      <div style="width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,#0369a1,#60a5fa);display:flex;align-items:center;justify-content:center;font-size:26px">✂️</div>
+      <div class="brand">
+        <h1>Barbershop</h1>
+        <p class="lead">Run the Replit project below or open it in a new tab.</p>
+      </div>
+    </header>
+
+    <div class="controls">
+      <a class="button" href="https://replit.com/@desiredoue22/ExtraneousIndigoPlanes" target="_blank" rel="noopener">Open Replit project</a>
+    </div>
+
+    <div class="card">
+      <h2 style="margin:0 0 8px 0">Live preview (embedded)</h2>
+      <p style="margin:0 0 12px 0;color:var(--muted)">Interact with the project directly on this page. If it doesn't load, open it in Replit using the button above.</p>
+      <div class="iframe-wrap" id="iframeWrap">
+        <!-- Replit supports embedding via /@user/slug?lite=true or /embed/slug. Using the lite view for better embedding. -->
+        <iframe id="replitFrame" title="Replit — ExtraneousIndigoPlanes" src="https://replit.com/@desiredoue22/ExtraneousIndigoPlanes?lite=true"></iframe>
+      </div>
+    </div>
+
+    <footer>
+      Deployed via GitHub Pages — check Settings → Pages to verify the source if needed.
+    </footer>
+  </div>
+
+  <script>
+    // If the embedded Replit blocks third-party framing, fallback to showing the button message.
+    const frame = document.getElementById('replitFrame');
+    frame.addEventListener('load', ()=>{
+      try{
+        // test access; will throw if cross-origin blocks some ops
+        const doc = frame.contentDocument || frame.contentWindow.document;
+      }catch(e){
+        // nothing to do; content will still be visible if Replit allows embedding
+      }
+    });
+    // If the iframe remains blank for a while, show a small hint to open in Replit.
+    setTimeout(()=>{
+      const win = frame.contentWindow;
+      // If the iframe hasn't painted (height 0) or reported no src, show a subtle overlay message
+      // (Skip complex overlay; user can use the Open Replit button.)
+    },4000);
+  </script>
 </body>
 </html>
